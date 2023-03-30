@@ -10,7 +10,7 @@ module.exports = {
         'general': '#01303f',
         'main': '#02577a',
         'sub' : '#02a9f7',
-      }
+      },
     },
   },
   plugins: [

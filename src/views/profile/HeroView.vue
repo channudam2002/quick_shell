@@ -1,11 +1,11 @@
 <template>
-    <div id="hero" class="w-screen h-screen flex flex-row items-center justify-between px-32">
+    <div id="hero" class="w-screen h-screen flex sm:flex-row flex-col items-center sm:justify-between justify-center sm:space-y-0 space-y-10 sm:px-32 px-10">
         <div class="flex flex-col space-y-10">
             <div class="flex flex-col space-y-5 items-start justify-center">
                 <div class="text-6xl font-primary text-main font-bold">
                     <p><span class="text-3xl text-sub">Host your projects</span> <br> in few tips of finger</p>
                 </div>
-                <div class=" border-l-8 border-sub font-primary text-general px-3 text-xl">
+                <div class=" border-l-8 border-sub text-general px-3 text-xl font-primary">
                     <p>QuickShell makes a FREE online hosting easily for student. <br> With hybrid controll and customize.
                     </p>
                 </div>
