@@ -3,6 +3,7 @@ import SignInView from '../views/SignInView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import LayoutView from '../views/profile/LayoutView.vue'
 import BLayoutView from '../views/back_office/BLayoutView.vue'
+import ShellsView from '../views/back_office/ShellsView.vue'
 
 const routes = [
   {
@@ -26,7 +27,14 @@ const routes = [
     component: BLayoutView,
     meta: {
       needsAuth: true
-    }
+    },
+    children:[
+      { 
+        path: '/shells',
+        name: 'shells',
+        component: ShellsView
+      }
+    ]
   }
 ]
 
@@ -43,6 +51,11 @@ router.beforeEach((to, from, next)=>{
       next("/sign-in");
     }
   }else{
+    if(to.name=="sign-in" || to.name=="sign-up"){
+      if (localStorage.getItem('token')){
+        next('/')
+      }
+    }
     next();
   }
 })

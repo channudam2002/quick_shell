@@ -58,6 +58,7 @@
     </div>
 </div></template>
 <script>
+import axios from 'axios'
 export default {
     data(){
         return{
@@ -66,8 +67,27 @@ export default {
         }
     },
     methods:{
-        singin(){
-            console.log(this.email, this.password)
+        async singin(){
+            // console.log(this.email, this.password)
+            let body = {
+                "email": this.email,
+                "password": this.password,
+                "notification_key": "test",
+                "device_type": "laptop"
+            }
+            await axios.post(`http://104.248.153.37:8000/api/auth/login`, body, {
+                headers:{
+                    'Accept': 'application/json'
+                }
+            }).then(res=>{
+                sessionStorage.setItem('user_name', res.data.user.name)
+                sessionStorage.setItem('user_email', res.data.user.email)
+                sessionStorage.setItem('user_profile', res.data.user.profile)
+                localStorage.setItem("token", res.data.access_token);
+            }).catch(err=>{
+                console.log(err.message);
+            })
+            this.$router.push('/back-office');
         }
     }
 }
