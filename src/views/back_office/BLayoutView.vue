@@ -26,12 +26,12 @@
                             <button type="button" @click="userDropDownClicked"
                                 class="flex flex-row space-x-3 items-center text-sm rounded-full hover:shadow-md focus:shadow-md p-1 px-3">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full"
-                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                                <img class="w-8 h-8 rounded-full" v-if="userInfo"
+                                    :src="userInfo.profile_img" alt="user photo">
                                 <p v-if="userInfo">{{ userInfo.name }}</p>
                             </button>
                         </div>
-                        <div v-show="userDropDownVisible" class="top-8 absolute">
+                        <div v-show="userDropDownVisible" class="top-8 absolute right-1">
                             <UserinfoDropdownComponent></UserinfoDropdownComponent>
                         </div>
                     </div>
@@ -68,9 +68,10 @@ export default {
     },
     mounted() {
         this.userInfo = {
-            profile_img: sessionStorage.getItem('user_profile'),
-            name: sessionStorage.getItem('user_name')
+            profile_img: localStorage.getItem('user_profile'),
+            name: localStorage.getItem('user_name')
         }
+        console.log(this.userInfo.profile_img)
     },
     methods:{
         userDropDownClicked(){

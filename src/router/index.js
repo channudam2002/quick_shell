@@ -4,6 +4,8 @@ import SignUpView from '../views/SignUpView.vue'
 import LayoutView from '../views/profile/LayoutView.vue'
 import BLayoutView from '../views/back_office/BLayoutView.vue'
 import ShellsView from '../views/back_office/ShellsView.vue'
+import TerminalsView from '../views/back_office/TerminalsView.vue'
+import AccountsView from '../views/back_office/AccountsView.vue'
 
 const routes = [
   {
@@ -33,7 +35,17 @@ const routes = [
         path: '/shells',
         name: 'shells',
         component: ShellsView
-      }
+      },
+      {
+        path: '/shells/terminal/:id',
+        name: 'terminal',
+        component: TerminalsView
+      },
+      { 
+        path: '/account',
+        name: 'account',
+        component: AccountsView
+      },
     ]
   }
 ]

@@ -10,7 +10,7 @@
         </div>
         <ul class="py-1" role="none">
             <li>
-                <router-link :to="{name : 'home'}"
+                <router-link :to="{name : 'account'}"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem">Profile</router-link>
             </li>
@@ -37,9 +37,9 @@ export default {
     },
     mounted(){
         this.userInfo = {
-            name: sessionStorage.getItem('user_name'),
-            email: sessionStorage.getItem('user_email'),
-            profile_img: sessionStorage.getItem('user_profile'),
+            name: localStorage.getItem('user_name'),
+            email: localStorage.getItem('user_email'),
+            profile_img: localStorage.getItem('user_profile'),
         }
     },
     methods:{

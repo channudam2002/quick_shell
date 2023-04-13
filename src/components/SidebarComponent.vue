@@ -12,7 +12,7 @@
                 <router-link :to="{name: 'home'}"
                     class="flex items-center p-2 text-general rounded-lg dark:text-white hover:bg-gray-100 hover:shadow-md dark:hover:bg-gray-700">
                     <span class="material-symbols-outlined">language</span>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Websites</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Hosting</span>
                 </router-link>
             </li>
             <li>
@@ -23,7 +23,7 @@
                 </router-link>
             </li>
             <li>
-                <router-link :to="{name: 'home'}"
+                <router-link :to="{name: 'account'}"
                     class="flex items-center p-2 text-general rounded-lg dark:text-white hover:bg-gray-100 hover:shadow-md dark:hover:bg-gray-700">
                     <span class="material-symbols-outlined">person</span>
                     <span class="flex-1 ml-3 whitespace-nowrap">Account</span>
