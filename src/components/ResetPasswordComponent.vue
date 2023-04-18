@@ -40,7 +40,7 @@ export default {
                 "password_confirmation" : this.new_pass_confirm
             }
             console.log(body)
-            axios.post("http://104.248.153.37:8000/api/auth/reset-password", body, {
+            axios.post("https://webapi.shellify.systems/api/auth/reset-password", body, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
