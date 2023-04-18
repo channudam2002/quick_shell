@@ -75,7 +75,7 @@ export default {
                 "notification_key": "test",
                 "device_type": "laptop"
             }
-            await axios.post(`http://104.248.153.37:8000/api/auth/login`, body, {
+            await axios.post(`https://webapi.shellify.systems/api/auth/login`, body, {
                 headers:{
                     'Accept': 'application/json'
                 }
