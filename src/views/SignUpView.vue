@@ -84,7 +84,7 @@ export default {
                 "password_confirmation": this.confirm_password
             }
             try {
-                axios.post(`http://104.248.153.37:8000/api/auth/register`, body, {
+                axios.post(`https://webapi.shellify.systems/api/auth/register`, body, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
