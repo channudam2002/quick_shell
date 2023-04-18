@@ -54,7 +54,7 @@ export default {
         }
     },
     mounted() {
-        fetch("http://104.248.153.37:8000/api/auth/user-profile", {
+        fetch("https://webapi.shellify.systems/api/auth/user-profile", {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -71,7 +71,7 @@ export default {
     },
     methods: {
         createNewShell() {
-            axios.post("http://104.248.153.37:8000/api/shell-sessions", {}, {
+            axios.post("https://webapi.shellify.systems/api/shell-sessions", {}, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -81,7 +81,7 @@ export default {
             }).catch(err=>console.log(err.message))
         },
         deleteShell(id){
-            axios.delete(`http://104.248.153.37:8000/api/shell-sessions/${id}`, {
+            axios.delete(`https://webapi.shellify.systems/api/shell-sessions/${id}`, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
