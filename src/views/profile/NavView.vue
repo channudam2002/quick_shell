@@ -8,7 +8,7 @@
         </div>
         <div class="sm:flex flex-row space-x-32 items-center hidden">
             <div id="nav" class="flex flex-row space-x-10 items-center uppercase font-bold">
-                <router-link :to="{name: 'back-office'}">
+                <router-link :to="{name: 'dashboard'}">
                     <div class="flex flex-row space-x-3 items-center rounded-md bg-main text-white p-3 px-5 hover:bg-sub hover:shadow-md hover:transition-all border-sub hover:drop-shadow-md">
                         <span class="material-symbols-outlined">dashboard</span>
                         <p>Dashboard</p>

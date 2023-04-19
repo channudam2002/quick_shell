@@ -4,7 +4,7 @@ import {io} from 'socket.io-client';
 export class RunXtermJs{
     constructor(){
         this.lst = [],
-        this.socket = io('http://localhost:3000')
+        this.socket = io('http://104.248.153.37:8080')
         this.socket.on('connect', ()=>{this.socket_id = this.socket.id})
         this.baseTheme = {
             foreground: '#F8F8F8',
@@ -84,7 +84,7 @@ export class RunXtermJs{
     }
 
     runTerminal(){
-        console.log(this.lst)
+        // console.log(this.lst)
         this.prompt(this.term);
         this.command = ""
         this.term.onData(e => {

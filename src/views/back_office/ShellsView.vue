@@ -78,7 +78,7 @@ export default {
                 }
             }).then(data => {
                 router.go()
-            })
+            }).catch(err=>console.log(err.message))
         },
         deleteShell(id){
             axios.delete(`http://104.248.153.37:8000/api/shell-sessions/${id}`, {
