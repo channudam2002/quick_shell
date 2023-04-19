@@ -39,7 +39,7 @@ export default {
     },
     async mounted() {
         this.shell_id = this.$route.params.id;
-        await fetch(`http://104.248.153.37:8000/api/shell-sessions/${this.shell_id}`, {
+        await fetch(`https://webapi.shellify.systems/api/shell-sessions/${this.shell_id}`, {
             headers:{
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
