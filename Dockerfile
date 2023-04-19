@@ -21,7 +21,7 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 RUN chsh -s /bin/bash docker
 
 # Copy all contents to the container
-COPY quick_shell_front_end /root/frontend
+COPY . /root/frontend
 
 EXPOSE 8080
 
