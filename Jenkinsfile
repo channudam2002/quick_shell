@@ -10,7 +10,7 @@ pipeline {
         stage('Building the Image'){
             steps {
                 sh """
-                    docker build --no-cache . -t frontend:latest 
+                    docker build . -t frontend:latest 
                 """
             }
         }
