@@ -84,7 +84,7 @@ export class RunXtermJs{
     }
 
     runTerminal(){
-        console.log(this.lst)
+        // console.log(this.lst)
         this.prompt(this.term);
         this.command = ""
         this.term.onData(e => {

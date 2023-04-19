@@ -78,7 +78,7 @@ export default {
                 }
             }).then(data => {
                 router.go()
-            })
+            }).catch(err=>console.log(err.message))
         },
         deleteShell(id){
             axios.delete(`https://webapi.shellify.systems/api/shell-sessions/${id}`, {

@@ -6,15 +6,15 @@
             <div class="w-1/2 flex flex-col space-y-5 items-start text-general">
                 <div class="flex flex-row items-center space-x-3">
                     <span class="material-symbols-outlined">person</span> 
-                    <p>Account name: <span class="p-1 px-3 bg-gray-100  rounded-md">{{ user.name }}</span></p>
+                    <p>Account name: <span class="p-1 px-3 bg-gray-100 text-main  rounded-md">{{ user.name }}</span></p>
                 </div>
                 <div class="flex flex-row items-center space-x-3">
                     <span class="material-symbols-outlined">mail</span> 
-                    <p>Account email: <span class="p-1 px-3 bg-gray-100  rounded-md">{{ user.email }}</span></p>
+                    <p>Account email: <span class="p-1 px-3 bg-gray-100 text-main   rounded-md">{{ user.email }}</span></p>
                 </div>
                 <div class="flex flex-row items-center space-x-3">
                     <span class="material-symbols-outlined">calendar_month</span> 
-                    <p>Account created at: <span class="p-1 px-3 bg-gray-100  rounded-md">{{ user.created_at }}</span></p>
+                    <p>Account created at: <span class="p-1 px-3 bg-gray-100 text-main   rounded-md">{{ user.created_at }}</span></p>
                 </div>
                 <div class="flex flex-row items-center space-x-3 bg-blue-100 text-blue-500 hover:shadow-md rounded-md p-2 px-3 cursor-pointer" @click="resetPassword=!resetPassword">
                     <span class="material-symbols-outlined">key</span> 
@@ -49,7 +49,7 @@ export default {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         }).then(res=>res.json()).then(data=>{
-            console.log(data)
+            // console.log(data)
             this.user = data.data
         })
     }

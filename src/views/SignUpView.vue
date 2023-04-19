@@ -64,6 +64,7 @@
     </div>
 </template>
 <script>
+import router from '@/router'
 import axios from 'axios'
 export default {
     data() {
@@ -86,13 +87,17 @@ export default {
             try {
                 axios.post(`https://webapi.shellify.systems/api/auth/register`, body, {
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Accept': 'application/json'
                     }
                 }).then(res => {
-                    console.log(res)
+                    // console.log(res)
+                    router.push("/verify")
+                }).catch(err=>{
+                    alert(err.response.data.message)
+                    // console.log(err.response.data.message)
                 })
             }catch(err){
-                console.log(err)
+                console.log(err.message)
             }
         }
     }

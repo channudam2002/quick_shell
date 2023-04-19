@@ -1,8 +1,8 @@
 <template>
     <div class="font-primary flex flex-col space-y-5 items-start w-full">
         <div class="flex flex-col space-y-3 items-start w-full">
-            <div class="text-xs bg-gray-300 text-general p-1 px-3 rounded-md">
-                <h1>{{ $route.params.id }}</h1>
+            <div class="text-xs bg-gray-300 text-general p-2 px-3 rounded-md">
+                <h1>ID : {{ $route.params.id }}</h1>
             </div>
             <div class="flex flex-row w-full items-center justify-between">
                 <div class="text-4xl text-main drop-shadow-md font-bold">
@@ -48,7 +48,7 @@ export default {
             this.port = data.data.container.port
             this.password = String(data.data.container.secret)
             this.host = String(data.data.server.publicip)
-            console.log(this.host, this.port, this.password)
+            // console.log(this.host, this.port, this.password)
         })
         const runXtermJs = new RunXtermJs();
         runXtermJs.term.open(document.getElementById('terminal'));

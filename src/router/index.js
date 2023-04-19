@@ -6,12 +6,19 @@ import BLayoutView from '../views/back_office/BLayoutView.vue'
 import ShellsView from '../views/back_office/ShellsView.vue'
 import TerminalsView from '../views/back_office/TerminalsView.vue'
 import AccountsView from '../views/back_office/AccountsView.vue'
+import DashboardView from '../views/back_office/DashboardView.vue'
+import VerifyView from '../views/VerifyView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: LayoutView
+  },
+  {
+    path: '/verify',
+    name: 'verify',
+    component: VerifyView
   },
   {
     path: '/sign-in',
@@ -24,6 +31,10 @@ const routes = [
     component: SignUpView
   },
   {
+    path: "/back-office",
+    redirect: "/dashboard"
+  },
+  {
     path: '/back-office',
     name: 'back-office',
     component: BLayoutView,
@@ -31,6 +42,11 @@ const routes = [
       needsAuth: true
     },
     children:[
+      {
+        path: "/dashboard",
+        name: 'dashboard',
+        component: DashboardView
+      },
       { 
         path: '/shells',
         name: 'shells',
