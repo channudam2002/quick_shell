@@ -1,9 +1,33 @@
 pipeline {
     agent { label 'web' }
     stages {
-        stage('Test') {
+        stage('Updating Resources') {
             steps {
-                sh 'ls -a'
+                sh 'git pull origin master'
+            }
+        }
+
+        stage('Building the Image'){
+            steps {
+                sh """
+                    docker build --no-cache . -t frontend:latest 
+                """
+            }
+        }
+
+        stage('Deleting Running Container'){
+            steps {
+                sh """
+                    docker rm -f frontend
+                """
+            }
+        }
+
+        stage('Upping the Container'){
+            steps {
+                sh """
+                    docker run -d -p 8080:8080 --name frontend frontend:latest
+                """
             }
         }
 
