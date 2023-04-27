@@ -90,7 +90,10 @@ export default {
                         'Accept': 'application/json'
                     }
                 }).then(res => {
-                    console.log(res)
+                    // console.log(res)
+                    router.push("/verify")
+                }).catch(err=>{
+                    alert(err.response.data.message)
                 })
             }catch(err){
                 console.log(err.message)
