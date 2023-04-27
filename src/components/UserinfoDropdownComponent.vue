@@ -28,6 +28,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
     data(){
         return{
@@ -36,6 +37,20 @@ export default {
         }
     },
     mounted(){
+        axios.get(`https://webapi.shellify.systems/api/auth/user-profile`, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                }).then(res => {
+                    console.log('Yes')
+                }).catch(err=>{
+                    if(err.message == 'Request failed with status code 401'){
+                        localStorage.clear();
+                        router.go();
+                    }
+                //    console.log(err.message)
+                })
         this.userInfo = {
             name: localStorage.getItem('user_name'),
             email: localStorage.getItem('user_email'),
