@@ -8,6 +8,7 @@ import TerminalsView from '../views/back_office/TerminalsView.vue'
 import AccountsView from '../views/back_office/AccountsView.vue'
 import DashboardView from '../views/back_office/DashboardView.vue'
 import VerifyView from '../views/VerifyView.vue'
+import HostingsView from '../views/back_office/HostingsView.vue'
 
 const routes = [
   {
@@ -62,6 +63,11 @@ const routes = [
         name: 'account',
         component: AccountsView
       },
+      {
+        path: '/hosting',
+        name: 'hosting',
+        component: HostingsView
+      }
     ]
   }
 ]
