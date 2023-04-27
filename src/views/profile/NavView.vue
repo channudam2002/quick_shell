@@ -36,7 +36,7 @@
                     </div>
                 </router-link>
             </div>
-            <div class="flex flex-row space-x-5 items-center">
+            <div class="flex flex-row space-x-5 items-center" v-if="isLoggedin == undefined">
                 <router-link :to="{name: 'sign-in'}">
                     <div class="hover:border-b-2 border-sub hover:drop-shadow-md">
                         Sign in
@@ -57,6 +57,13 @@
 </template>
 <script>
 export default {
-    
+    data(){
+       return{
+        isLoggedin: undefined
+       }
+    },
+    mounted() {
+        this.isLoggedin = localStorage.getItem('token')
+    }
 }
 </script>

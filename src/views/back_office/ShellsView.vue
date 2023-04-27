@@ -87,6 +87,10 @@ export default {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(data => {
+                // router.go()
+            }).catch(err=>{
+                console.log(err.message)
+            }).finally(()=>{
                 router.go()
             })
         },
