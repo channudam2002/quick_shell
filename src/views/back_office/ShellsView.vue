@@ -2,7 +2,7 @@
     <div class="font-primary flex flex-col space-y-5 items-start w-full">
         <h1 class="text-4xl text-main drop-shadow-md font-bold">Shells</h1>
         <hr class="w-full border-gray-200">
-        <div class="w-full grid lg:grid-cols-4 grid-cols-1 gap-4 items-center">
+        <div class="w-full grid lg:grid-cols-4 grid-cols-1 gap-4 items-center" v-if="shellSessions">
             <div v-for="shellSession in shellSessions" :key="shellSession.id">
                 <div v-if="shellSession && shellSession.is_removed == 0"
                     class="p-3 bg-white text-general shadow-md rounded-md hover:bg-general hover:text-white group cursor-pointer">
@@ -62,11 +62,13 @@ export default {
         }).then(res => res.json())
             .then(data => {
                 // console.log(data.data.sessions);
-                data.data.sessions.forEach(shellSession=>{
-                    if(shellSession.is_removed != 1){
-                        this.shellSessions.push(shellSession);
-                    }
-                })
+                if (data.data.sessions) {
+                    data.data.sessions.forEach(shellSession => {
+                        if (shellSession.is_removed != 1) {
+                            this.shellSessions.push(shellSession);
+                        }
+                    })
+                }
             })
     },
     methods: {
@@ -78,9 +80,9 @@ export default {
                 }
             }).then(data => {
                 router.go()
-            }).catch(err=>console.log(err.message))
+            }).catch(err => console.log(err.message))
         },
-        deleteShell(id){
+        deleteShell(id) {
             axios.delete(`https://webapi.shellify.systems/api/shell-sessions/${id}`, {
                 headers: {
                     'Accept': 'application/json',
@@ -88,13 +90,13 @@ export default {
                 }
             }).then(data => {
                 // router.go()
-            }).catch(err=>{
+            }).catch(err => {
                 console.log(err.message)
-            }).finally(()=>{
+            }).finally(() => {
                 router.go()
             })
         },
-        goToTerminal(id){
+        goToTerminal(id) {
             router.push('/shells/terminal/' + id)
         }
     }
