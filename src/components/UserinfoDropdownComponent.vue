@@ -43,7 +43,7 @@ export default {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
                 }).then(res => {
-                    console.log('Yes')
+                    // console.log('Yes')
                 }).catch(err=>{
                     if(err.message == 'Request failed with status code 401'){
                         localStorage.clear();
