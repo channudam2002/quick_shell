@@ -43,14 +43,20 @@
             </div>
         </div>
     </div>
+    <div v-if="showFlash">
+        <FlashComponent @closeFlash="closeFlash"></FlashComponent>
+    </div>
 </template>
 <script>
 import router from '@/router'
 import axios from 'axios'
+import FlashComponent from '../../components/FlashComponent.vue';
 export default {
+    components:{FlashComponent},
     data() {
         return {
-            shellSessions: []
+            shellSessions: [],
+            showFlash: false
         }
     },
     mounted() {
@@ -79,25 +85,32 @@ export default {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(data => {
-                router.go()
+                this.showFlash = true;
+                router.go();
             }).catch(err => console.log(err.message))
         },
         deleteShell(id) {
-            axios.delete(`https://webapi.shellify.systems/api/shell-sessions/${id}`, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(data => {
-                // router.go()
-            }).catch(err => {
-                console.log(err.message)
-            }).finally(() => {
-                router.go()
-            })
+            if (confirm('Are you sure to delete this session?')) {
+                axios.delete(`https://webapi.shellify.systems/api/shell-sessions/${id}`, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                }).then(data => {
+                    // router.go()
+                }).catch(err => {
+                    console.log(err.message)
+                }).finally(() => {
+                    this.showFlash = true;
+                    router.go()
+                })
+            }
         },
         goToTerminal(id) {
             router.push('/shells/terminal/' + id)
+        },
+        closeFlash(){
+            this.showFlash = false;
         }
     }
 }

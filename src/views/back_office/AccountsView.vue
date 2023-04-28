@@ -16,9 +16,9 @@
                     <span class="material-symbols-outlined">calendar_month</span> 
                     <p>Account created at: <span class="p-1 px-3 bg-gray-100 text-main   rounded-md">{{ user.created_at }}</span></p>
                 </div>
-                <div class="flex flex-row items-center space-x-3 bg-blue-100 text-blue-500 hover:shadow-md rounded-md p-2 px-3 cursor-pointer" @click="resetPassword=!resetPassword">
+                <div class="flex flex-row items-center space-x-3 bg-blue-100 text-blue-500 hover:shadow-md rounded-md p-2 px-3 cursor-pointer hover:shadow-blue-300" @click="resetPassword=!resetPassword">
                     <span class="material-symbols-outlined">key</span> 
-                    <p>Reset password</p>
+                    <p>Change password</p>
                 </div>
                 <div class="w-full" v-if="resetPassword">
                     <ResetPasswordComponent :user_id="user.id"></ResetPasswordComponent>
