@@ -75,9 +75,9 @@
                                 </p>
                             </div>
                             <div class="w-full flex flex-row space-x-3 items-center justify-end" v-if="showModel">
-                                <input type="text" class="text-gray-900 w-4/6 py-2 px-3 rounded-md">
+                                <input type="text" class="text-gray-900 w-4/6 py-2 px-3 rounded-md" placeholder="your cname" v-model="cname">
                                 <div class="flex items-end justify-start">
-                                    <button class="py-2 px-3 text-white hover:shadow-md bg-orange-500 rounded-md">Point
+                                    <button @click="pointDomain(shellSession.domain)" class="py-2 px-3 text-white hover:shadow-md bg-orange-500 rounded-md">Point
                                     </button>
                                 </div>
                             </div>
@@ -101,26 +101,6 @@
             </div>
         </div>
     </div>
-    <!-- <div @click.self="showModel = false"
-        class="w-screen h-screen bg-black bg-opacity-50 absolute top-0 left-0 flex flex-row items-center justify-center z-50"
-        v-if="showModel">
-        <div class="font-primary min-w-max bg-white rounded-md p-6 flex flex-col space-y-3 items-start">
-            <div class="text-xl text-main drop-shadow-md flex flex-row justify-between items-center w-full">
-                <p>Point my domian</p>
-                <span @click="showModel=false" class="material-symbols-outlined text-xs hover:text-red-500 cursor-pointer">cancel</span>
-            </div>
-            <hr class="w-full">
-            <div class="flex flex-row space-x-3 items-center">
-                <input type="text" v-model="domainName" id="first_name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="your domain name" required>
-                <div class="flex items-end justify-start">
-                    <button class="py-2 px-3 text-white hover:shadow-md bg-orange-500 rounded-md">Point
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </template>
 <script>
 import router from '@/router';
@@ -132,7 +112,8 @@ export default {
             selectedSession: undefined,
             domainName: undefined,
             isLoading: false,
-            showModel: false
+            showModel: false,
+            cname: undefined
         }
     },
     mounted() {
@@ -189,8 +170,22 @@ export default {
                 router.go();
             })
         },
-        pointDomain() {
-            console.log('yes')
+        pointDomain(domain) {
+            this.isLoading = true
+            axios.post(`https://webapi.shellify.systems/api/register_dns_record_cname_forward`,{
+                domain: domain,
+                cname: this.cname
+            },{
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(data => {
+                console.log(data);
+            }).catch(err => {
+                console.log(err.message);
+            }).finally(() => {
+                router.go();
+            })
         }
     }
 }
