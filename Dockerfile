@@ -1,5 +1,10 @@
 FROM ubuntu:latest
 
+# Setting the environment ip address
+# By setting the host to 0.0.0.0 we are telling the container to listen on all interfaces at port 8080
+ENV HOST=0.0.0.0
+
+
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Kolkata
