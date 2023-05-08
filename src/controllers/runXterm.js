@@ -89,10 +89,10 @@ export class RunXtermJs{
         this.command = ""
         this.term.onData(e => {
             switch(e){
-                case '\u0003': // Ctrl+C
-                    this.term.write('^C');
-                    this.prompt(this.term);
-                    break;
+                // case '\u0003': // Ctrl+C
+                //     this.term.write('^C');
+                //     this.prompt(this.term);
+                //     break;
                 case '\r': // Enter
                     this.runCommand(this.term, this.command);
                     break;

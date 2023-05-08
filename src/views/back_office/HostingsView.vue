@@ -31,7 +31,7 @@
                                     {{ session.publicip }}
                                 </div>
                                 <div v-else>
-                                    {{ session.publicip }} (Aready existed)
+                                    {{ session.publicip }}:{{ session.port }} (Aready existed)
                                 </div>
                             </option>
                         </select>
