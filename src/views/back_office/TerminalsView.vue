@@ -40,21 +40,33 @@ export default {
     async mounted() {
         this.shell_id = this.$route.params.id;
         await fetch(`https://webapi.shellify.systems/api/shell-sessions/${this.shell_id}`, {
-            headers:{
+            headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
-        }).then(res=>res.json()).then(data=>{
+        }).then(res => res.json()).then(data => {
             this.port = data.data.container.port
             this.password = String(data.data.container.secret)
             this.host = String(data.data.server.publicip)
-            // console.log(this.host, this.port, this.password)
         })
         const runXtermJs = new RunXtermJs();
         runXtermJs.term.open(document.getElementById('terminal'));
+        runXtermJs.term.attachCustomKeyEventHandler((key) => {
+            runXtermJs.term.focus();
+            if (key.ctrlKey && key.shiftKey) {
+                if (key.code == 'KeyV') {
+                    let copiedText = ""
+                    navigator.permissions.query({ name: "clipboard-read" });
+                    navigator.clipboard.readText().then(_copiedText=>{
+                        copiedText = _copiedText;
+                        runXtermJs.command = "";
+                        runXtermJs.command = copiedText;
+                    })
+                }
+            }
+        })
         this.socket_id = runXtermJs.getSockId();
         runXtermJs.socket.emit("ssh_connection", this.host, this.port, 'root', this.password, this.socket_id)
-        // runXtermJs.socket.emit("ssh_connection", '188.166.180.255', 32770, 'root', 'hello', this.socket_id)
         runXtermJs.runTerminal();
     },
 }
@@ -62,16 +74,14 @@ export default {
 </script>
 
 <style>
-
 .xterm {
-  padding: 20px 10px 20px 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 10px;
+    padding: 20px 10px 20px 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
 }
 
-.xterm-viewport{
-  border-radius: 15px;
+.xterm-viewport {
+    border-radius: 15px;
 }
-
 </style>

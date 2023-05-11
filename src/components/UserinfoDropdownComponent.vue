@@ -56,7 +56,7 @@ export default {
             name: localStorage.getItem('user_name'),
             email: localStorage.getItem('user_email'),
             profile_img: localStorage.getItem('user_profile'),
-        }
+        };
     },
     methods:{
         signout(){

@@ -5,6 +5,7 @@ export class RunXtermJs{
     constructor(){
         this.lst = [],
         this.socket = io('https://websocket.shellify.systems')
+        // this.socket = io('http://localhost:3000')
         this.socket.on('connect', ()=>{this.socket_id = this.socket.id})
         this.baseTheme = {
             foreground: '#F8F8F8',
@@ -33,6 +34,7 @@ export class RunXtermJs{
             cursorBlink: true,
             allowProposedApi: true
         });
+        this.term.focus();
         this.fitAddon = new FitAddon();
         this.term.loadAddon(this.fitAddon)
         this.fitAddon.fit();
@@ -90,8 +92,6 @@ export class RunXtermJs{
         this.term.onData(e => {
             switch(e){
                 case '\u0003': // Ctrl+C
-                    // this.term.write('^C');
-                    // this.prompt(this.term);
                     this.runCommand(this.term, '^C');
                     break;
                 case '\r': // Enter
