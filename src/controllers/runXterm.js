@@ -4,8 +4,8 @@ import {io} from 'socket.io-client';
 export class RunXtermJs{
     constructor(){
         this.lst = [],
-        this.socket = io('https://websocket.shellify.systems')
-        // this.socket = io('http://localhost:3000')
+        // this.socket = io('https://websocket.shellify.systems')
+        this.socket = io('http://localhost:3000')
         this.socket.on('connect', ()=>{this.socket_id = this.socket.id})
         this.baseTheme = {
             foreground: '#F8F8F8',

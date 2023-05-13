@@ -61,6 +61,7 @@ export default {
                         copiedText = _copiedText;
                         runXtermJs.command = "";
                         runXtermJs.command = copiedText;
+                        runXtermJs.runCommand(runXtermJs.term, runXtermJs.command);
                     })
                 }
             }

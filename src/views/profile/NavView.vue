@@ -1,7 +1,7 @@
 <template>
     <div class="w-screen py-3 sm:px-20 px-10 bg-white text-general flex flex-row items-center justify-between space-x-5 font-primary fixed top-0 left-0 z-50">
         <div id="logo" class="sm:w-32 w-24">
-            <img src="../../assets/logo.png" alt="logo" class="w-full">
+            <img src="../../assets/shellify.png" alt="logo" class="w-full">
         </div>
         <div class="sm:hidden block">
             <span class="material-symbols-outlined bg-main p-1 rounded-md text-white">menu</span>
